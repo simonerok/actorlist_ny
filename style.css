@@ -1,0 +1,125 @@
+* {
+  all: unset;
+
+  display: revert;
+
+  cursor: revert;
+
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 1250px;
+  /*  Denne linje centerer alt på siden */
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+}
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  padding: 1rem;
+}
+h2 {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+/* Styling af tekst i array */
+
+.kategori_overskrift {
+  font-family: "Permanent Marker";
+}
+
+body {
+  background-color: rgba(172, 203, 214, 0.87);
+}
+
+section {
+  background-color: rgb(255, 255, 255);
+}
+
+/* Knapper */
+.valgt {
+  background-color: rgba(5, 54, 187, 0.74);
+}
+
+button,
+li {
+  padding: 5px;
+  background-color: rgb(255, 254, 254);
+  box-shadow: 0px -2px 20px 2px rgba(0, 0, 0, 0.298);
+  border-radius: 4px;
+}
+
+button {
+  margin: 5px;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  list-style: none;
+  gap: 10px;
+  padding: 1rem;
+}
+
+/* mobilversion vi bruger minmax for at den vælger hvor meget plads den skal udfylde */
+#indhold {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  padding: 1rem;
+}
+
+article {
+  border: 2px solid rgb(72, 152, 167);
+  padding: 1rem;
+  line-height: 30px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* styling af popop vindu */
+#popop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(3, 3, 3, 0.702);
+  display: none;
+  justify-content: center;
+  overflow: scroll;
+}
+
+#popop article {
+  width: 55%;
+  max-width: 875px;
+  background-color: white;
+  padding: 3rem;
+  position: fixed;
+  align-self: center;
+}
+
+/* style luk knap */
+#luk {
+  position: absolute;
+  display: flex;
+  /*  padding: 1em; */
+  font-size: 1.7rem;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: flex;
+  z-index: 1;
+  top: 40%;
+  left: 25%;
+}

@@ -4,119 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Actorlist</title>
   </head>
-  <body>
+  <body> 
+    <header>
+        <h1>Actor list 2023</h1>
+      <nav>
+  <!-- Filtreringskanpper -->
+      <h2 id="kategori_overskrift">Alle</h2>
+      <div id="filter_btn">
+        <button data-kategori="alle" class="valgt">All</button>
+        <button data-kategori="movies">Movies</button>
+        <button data-kategori="actorName">Actors</button>
+      </div>
+      </nav>
+</header>
+
     <main>
-    <h1>Actor list 2023</h1>
+      <!-- Template til array -->
+      <section id="indhold">
+        <template>
+          <article>
+            <p class="fuldeNavn"></p>
+            <p class="movie"></p>
+          </article>
+        </template>
+      </section>
 
-    <!-- Filtreringskanpper -->
-    <h2 id="categories">Alle</h2>
-    <div id="filter_btn">
-      <button data-kategori="alle" class="valgt">All</button>
-      <button data-kategori="movies">Movies</button>
-      <button data-kategori="actorName">Actors</button>
-    </div>
-
-    <!-- Template til array -->
-    <section>
-      <template>
-        <article>
-          <p class="fullName"></p>
-          <p class="movie"></p>
-        </article>
-      </template>
-    </section>
-
-       <!-- html til popup -->
-    <div id="popop">
+   <!-- html til popup -->
+      <div id="popop">
     <div id="luk">&#x2715</div>
     <article class="popup_container">
       <h2>Info</h2>
-      <p></p>
-      <p></p>
+      <p class="visNavn"></p>
+            <p class="visFilm"></p>
     </article> 
-    </div>
-</main>
-
-
-    <script>
-      /* KONSTANTER */
-      let temp = document.querySelector("template");
-      let container = document.querySelector("section");  
-      let json;
-
-
-      /* HENTER DATA */
-
-      /* Henter daten via filen actor.json */
-      const fil = "actors.json";
-      /* Henter json  */
-      async function hentData(fil) {
-        const response = await fetch(fil);
-        /* Gør at vores template nu indeholder vores json data */
-        json = await response.json();
-        vis(json);
-      }
-
-
-      /* ARRAY  */
-      function vis(json) {
-        console.log(json);
-
-        json.forEach((actor) => {
-        /* Denne sætning fjerner "listen" hver gang der bliver klikket for at undgå listen ikke bliver ved med at køre igennem */
-          container.innerHTML = "";
-          /* Gør at filreringen altid starter med at vise alle */
-          if (filter == actor.kategori || filter == "alle") {
-          const klon = temp.cloneNode(true).content;
-          klon.querySelector(".fullName").textContent = actor.fullname;
-          klon.querySelector(".movie").textContent = actor.movie;
-          /* klon.querySelector("#popop").addEventListener("click", () => visPopup(actor)); */
-          container.appendChild(klon);
-        }
-      });
-    }
-
-    /* FILTRERING  */
-      const filterKnapper = document.querySelectorAll("button");
-      let filter = "alle"
-      const filterOverskrift =document.querySelector("#categories");
-
-      filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerKnapper))
-
-function filtrerKnapper(){
-  console.log("klikket på")
-  filter = this.dataset.kategori;
-  vis(json);
-    filter_btn.textContent = this.dataset.kategori;
-   let valgtKnap = document.querySelectorAll(".valgt")
-valgtKnap.forEach(knap => {
-  knap.classList.remove("valgt");
-})
-  this.classList.add("valgt");
-  }
-
-
-/* Popup  */
-
-/* Luk knap til popup */
-/* document.querySelector("#luk").addEventListener("click", ()=> (popup.style.display = "none")); */
-
-/* function visPopup (popupData) { 
-  console.log(popupData)
-const popup =document.querySelector("#popup_vindu");
-popup.style.display ="flex";
-popup.querySelector("p").textContent = popupData.fullName;
-popup.querySelector("p").textContent = popupData.movie; 
-} */
+    </div> 
+   
+    </main>
 
 
 
-
-
-
-hentData(fil);
-    </script>
+   <script src="Script.js"></script>
   </body>
 </html>
