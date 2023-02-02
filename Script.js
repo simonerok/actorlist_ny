@@ -1,6 +1,6 @@
 /* KONSTANTER */
 let temp = document.querySelector("template");
-let container = document.querySelector("section");
+let container = document.querySelector("#indhold");
 let json;
 const header = document.querySelector("header h2");
 
@@ -24,8 +24,6 @@ const filterKnapper = document.querySelectorAll("nav button");
 filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerknapper));
 
 function filtrerknapper() {
-  console.log("klikket på");
-
   /* sletter klassen valgt når der klikkes på noget nyt */
   document.querySelector(".valgt").classList.remove("valgt");
   this.classList.add("valgt");
@@ -43,10 +41,16 @@ function vis(json) {
 
   json.forEach((actor) => {
     /* Gør at filreringen altid starter med at vise alle */
-    if (filter == "alle" || filter == actor.kategori) {
+    if (filter == "movies") {
+      console.log("hej");
+
+      const klon = temp.cloneNode(true).content;
+      klon.querySelector(".movie").textContent = actor.movie;
+      klon.querySelector("article").addEventListener("click", () => visEnkelt(actor));
+      container.appendChild(klon);
+    } else {
       const klon = temp.cloneNode(true).content;
       klon.querySelector(".fuldeNavn").textContent = actor.fullname;
-      /*   klon.querySelector(".movie").textContent = actor.movie; */
       klon.querySelector("article").addEventListener("click", () => visEnkelt(actor));
       container.appendChild(klon);
     }
