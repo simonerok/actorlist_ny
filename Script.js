@@ -17,6 +17,7 @@ async function hentData(fil) {
 }
 
 /* FILTRERING  */
+/* Her definere vi at filter = alle, dette gør at alle bliver vist når siden bliver laoded ind*/
 let filter = "alle";
 const filterKnapper = document.querySelectorAll("nav button");
 
@@ -24,6 +25,8 @@ const filterKnapper = document.querySelectorAll("nav button");
 filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerknapper));
 
 function filtrerknapper() {
+  /* Den finder data-movie værdierne og sætter filteret til dette */
+  filter = this.dataset.movie;
   /* sletter klassen valgt når der klikkes på noget nyt */
   document.querySelector(".valgt").classList.remove("valgt");
   this.classList.add("valgt");
@@ -40,16 +43,12 @@ function vis(json) {
   container.textContent = "";
 
   json.forEach((actor) => {
-    /* Gør at filreringen altid starter med at vise alle */
-    if (filter == "movies") {
+    /* Dette fungere som en if else sætning så den viser alle til at starte med og ellers filtrere igennem filmene*/
+    if (filter == "alle" || filter == actor.movie) {
       console.log("hej");
 
       const klon = temp.cloneNode(true).content;
       klon.querySelector(".movie").textContent = actor.movie;
-      klon.querySelector("article").addEventListener("click", () => visEnkelt(actor));
-      container.appendChild(klon);
-    } else {
-      const klon = temp.cloneNode(true).content;
       klon.querySelector(".fuldeNavn").textContent = actor.fullname;
       klon.querySelector("article").addEventListener("click", () => visEnkelt(actor));
       container.appendChild(klon);
@@ -57,7 +56,7 @@ function vis(json) {
   });
 }
 
-/* Popup  */
+/* POPOP  */
 
 /* Luk knap til popup */
 document.querySelector("#luk").addEventListener("click", () => (popop.style.display = "none"));
@@ -69,4 +68,5 @@ function visEnkelt(popopData) {
   popop.querySelector(".visFilm").textContent = "Film: " + popopData.movie;
 }
 
+/* Husk at kalde funktionen til sidst for at hente dataten ind  */
 hentData(fil);

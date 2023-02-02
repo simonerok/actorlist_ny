@@ -11,18 +11,22 @@
     <header>
         <h1>Actor list 2023</h1>
       <nav>
-  <!-- Filtreringskanpper -->
+  <!-- FILTRERINGSKNAPPER -->
       <h2 id="kategori_overskrift">Alle</h2>
       <div id="filter_btn">
-        <button data-kategori="alle" class="valgt">All actors</button>
-        <button data-kategori="movies">Movies</button>
-       <!--  <button data-kategori="actorName">Actors</button> -->
+        <!-- Navene på filmene kommer fra vores Jason data derfor med store bogstaver -->
+        <button data-movie="alle" class="valgt">All actors</button>
+        <button data-movie="Pulp Fiction">Pulp Fiction</button>
+        <button data-movie="Inception">Inception</button>
+        <button data-movie="Goodfellas">Goodfellas</button>
+        <button data-movie="Fight Club">Fight Club</button>
+    
       </div>
       </nav>
 </header>
 
     
-      <!-- Template til array -->
+      <!-- TEMPLATE TIL ARRAY -->
       <section id="indhold"></section>
         <template>
           <article>
@@ -32,7 +36,7 @@
         </template>
      
 
-   <!-- html til popup -->
+   <!-- HTML TIL POPOP -->
       <div id="popop">
     <div id="luk">&#x2715</div>
     <article class="popup_container">
